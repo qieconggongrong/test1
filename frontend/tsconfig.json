@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                     // 编译目标 JavaScript 版本 (ES6 兼容性较好)
+    "module": "ESNext",                  // 使用最新的模块系统，方便 Webpack 进行优化
+    "moduleResolution": "node",          // 模块解析策略
+    "esModuleInterop": true,             // 允许从 CommonJS 模块中默认导入，提高兼容性
+    "allowSyntheticDefaultImports": true,// 允许默认导入没有默认导出的模块
+    "strict": true,                      // 启用所有严格类型检查选项 (推荐)
+    "skipLibCheck": true,                // 跳过对声明文件 (*.d.ts) 的类型检查，可以加快编译速度
+    "forceConsistentCasingInFileNames": true, // 强制文件名大小写一致
+    "resolveJsonModule": true,           // 允许导入 .json 文件
+    "sourceMap": true,                   // 生成 .map 文件，方便调试 (开发时推荐)
+    // "noEmit": true,                   // 通常设置为 true，因为 Webpack (ts-loader) 会处理文件的生成和打包
+                                         // 如果设置为 false 或不设置，tsc 可能会尝试输出 .js 文件，这可能不是你想要的
+    "baseUrl": "./",                     // 用于解析非相对模块路径的基目录 (例如，设置 "src" 可以让你用 'components/MyComponent' 代替 '../../components/MyComponent')
+    "paths": {                           // 与 baseUrl 配合使用，创建路径别名 (可选)
+      "@/*": ["src/*"]                    // 例如，允许 import MyComponent from '@/components/MyComponent'
+    }
+    // 如果你使用 JSX (比如 React 或 Vue 与 JSX/TSX)，你可能需要添加:
+    // "jsx": "react-jsx" // 或 "preserve" 等，取决于你的框架
+  },
+  "include": [
+    "src/**/*.ts"  // 告诉 TypeScript 编译器包含 src 目录下的所有 .ts 文件 (及其子目录)
+                   // 这会解决 'files' list is empty 的问题
+  ],
+  "exclude": [
+    "node_modules", // 必须排除 node_modules 目录
+    "dist",         // 通常也会排除构建输出目录
+    "**/*.spec.ts", // 如果你有测试文件，并且不想在主编译中包含它们
+    "**/*.test.ts"
+  ]
+}

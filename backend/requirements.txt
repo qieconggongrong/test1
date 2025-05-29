@@ -1,0 +1,8 @@
+Django==4.2.0
+djangorestframework==3.14.0
+python-dotenv==1.0.0
+requests==2.28.2
+django-cors-headers==4.0.0
+PyJWT==2.6.0
+djangorestframework-simplejwt==5.3.1
+# mysqlclient==2.1.1 # 可选，仅当需要使用MySQL数据库时才需要安装
